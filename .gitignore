@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+# editor / tooling scratch
+.playwright-mcp/
+*.log
+# stray local screenshots (never part of the site)
+/dossier-*.png
+/home-*.png
+/work-*.png
+/about-*.png
+/now-*.png
+/404-*.png
+/papers-*.png
+/books-*.png
+/reading-*.png
+/glow-*.png
+/navy-*.png

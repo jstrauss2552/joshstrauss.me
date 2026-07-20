@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- Renders the app-icon PNGs (full-bleed square; iOS rounds corners itself).
+     Screenshot at 512×512 → icon-512.png, then downscale for 192/180 (see README). -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    @font-face {
+      font-family: 'Newsreader';
+      font-style: italic;
+      font-weight: 400 700;
+      src: url('../fonts/newsreader-italic-var.woff2') format('woff2');
+    }
+    * { margin: 0; }
+    html, body { width: 512px; height: 512px; overflow: hidden; }
+    body {
+      background: #1E3A5F;
+      display: grid;
+      place-items: center;
+    }
+    span {
+      font-family: 'Newsreader', Georgia, serif;
+      font-style: italic;
+      font-weight: 560;
+      font-size: 290px;
+      color: #F7F2EA;
+      letter-spacing: -0.04em;
+      transform: translateY(-14px);
+    }
+  </style>
+</head>
+<body><span>JS</span></body>
+</html>

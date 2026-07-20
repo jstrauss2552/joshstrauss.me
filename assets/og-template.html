@@ -1,0 +1,85 @@
+<!doctype html>
+<!-- Renders the 1200×630 social share card ("GumGauge Navy" — inverted
+     navy cover, like a book jacket for the cream site). Not linked from
+     the site. Regenerate assets/og.png by screenshotting this page at
+     1200×630 (see README.md → "Regenerating the share image"). -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    @font-face {
+      font-family: 'Newsreader';
+      font-style: normal;
+      font-weight: 400 700;
+      src: url('../fonts/newsreader-var.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Newsreader';
+      font-style: italic;
+      font-weight: 400 700;
+      src: url('../fonts/newsreader-italic-var.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Fragment Mono';
+      font-style: normal;
+      font-weight: 400;
+      src: url('../fonts/fragment-mono.woff2') format('woff2');
+    }
+    * { margin: 0; box-sizing: border-box; }
+    html, body { width: 1200px; height: 630px; overflow: hidden; }
+    body {
+      position: relative;
+      background: #1E3A5F;
+      background-image: radial-gradient(52rem 30rem at 10% -12%,
+        rgba(125, 211, 252, .14), transparent 62%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 90px;
+      font-family: 'Newsreader', Georgia, serif;
+      color: #F7F2EA;
+    }
+    body::after {
+      content: '';
+      position: absolute; inset: 0;
+      opacity: .06; mix-blend-mode: overlay; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .kicker {
+      font-family: 'Fragment Mono', monospace;
+      font-size: 20px; letter-spacing: .12em; text-transform: uppercase;
+      color: #9CC4E4; display: flex; align-items: center; gap: 24px;
+      margin-bottom: 34px;
+    }
+    .kicker::after { content: ''; flex: 1; height: 2px; background: rgba(247, 242, 234, .25); }
+    h1 {
+      font-size: 118px; font-weight: 540; letter-spacing: -0.015em;
+      line-height: 1.02; margin-bottom: 30px;
+    }
+    h1 em { font-style: italic; font-weight: 480; color: #7DD3FC; }
+    .sub {
+      font-family: 'Fragment Mono', monospace;
+      font-size: 24px; color: #9CC4E4; letter-spacing: .02em;
+    }
+    .domain {
+      position: absolute; bottom: 56px; left: 90px;
+      font-family: 'Fragment Mono', monospace;
+      font-size: 22px; letter-spacing: .1em; text-transform: uppercase;
+      color: #7DD3FC;
+    }
+    .mark {
+      position: absolute; bottom: 44px; right: 90px;
+      width: 56px; height: 56px; border-radius: 10px; background: #7DD3FC;
+      display: grid; place-items: center;
+      color: #1E3A5F; font-style: italic; font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <p class="kicker">Builder &amp; Founder</p>
+  <h1>Josh <em>Strauss</em></h1>
+  <p class="sub">Building products and companies that leave people better off.</p>
+  <p class="domain">joshstrauss.me</p>
+  <div class="mark">JS</div>
+</body>
+</html>
