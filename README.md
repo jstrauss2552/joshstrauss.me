@@ -124,9 +124,17 @@ Then regenerate `assets/og.png` (the domain is printed on it).
 exactly 1200×630. Same for icons via `assets/icon-template.html` at 512×512,
 then `sips -z` down to 192/180/32. Keep og.png under 300 KB.
 
-## Deploying (when domain is bought)
+## Deploying — LIVE on GitHub Pages
 
-Recommended: **Cloudflare** (Workers static assets; unlimited free bandwidth).
-Fallback: GitHub Pages. Avoid Vercel Hobby (non-commercial terms). After
-deploy: register in **Bing Webmaster Tools** (ChatGPT search runs on Bing's
-index) and Google Search Console; submit the sitemap in both.
+The site ships from **github.com/jstrauss2552/joshstrauss.me** via GitHub Pages
+(source: `main` / root; custom domain set by the `CNAME` file). **To redeploy,
+just `git push`** — Pages rebuilds automatically.
+
+DNS at GoDaddy (apex `joshstrauss.me`):
+- Four **A** records → `185.199.108.153`, `185.199.109.153`,
+  `185.199.110.153`, `185.199.111.153`
+- One **CNAME**: `www` → `jstrauss2552.github.io`
+- Then repo **Settings → Pages → Enforce HTTPS** once the cert issues (24–48h).
+
+After it resolves: register in **Bing Webmaster Tools** (ChatGPT search runs on
+Bing's index) and Google Search Console; submit the sitemap in both.
