@@ -19,13 +19,13 @@ hover one to see its note. Find them in code:
 - [ ] About bio — drafted; confirm or rewrite in your voice
 - [x] B'nai B'rith — still active (2017–present)
 - [x] JCC Sports Center — ended June 2025
-- [x] UATX Class of 2029 · Posnack Class of 2025 (confirmed 2026-07-15)
+- [x] UATX sophomore · Class of 2029 · Posnack Class of 2025 (confirmed 2026-08-29)
 - [ ] UATX — anything notable (scholarships, clubs)
 - [ ] "Works with" chips — confirm & trim
 
 ## Then
 
-- [x] GumGauge — Founder & CEO, started August 2023 (confirmed 2026-07-15)
+- [x] GumGauge — Co-founder & CEO, started August 2023 (confirmed 2026-08-29)
 - [x] Mise — solo, started May 2026
 - [ ] Giltedge — confirm "Founder"
 - [ ] Status box — anything else in rotation this month
@@ -35,7 +35,7 @@ hover one to see its note. Find them in code:
 ## Whenever
 
 - [x] Venture logos — pulled from the GumGauge, Mise, Giltedge, and SP&E repos (2026-07-16)
-- [x] Mise waitlist — 24 people (2026-07-17)
+- [x] Mise waitlist — 24 people as of 2026-07-17 (historical; not displayed)
 - [ ] More traction numbers as they happen (users, inquiries, Giltedge pipeline)
 - [ ] App Store / Play Store links when live
 

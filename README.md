@@ -7,8 +7,7 @@ and a cursor-following dot-grid reveal. Hand-written HTML + CSS + one tiny
 script (`script.js` feeds the cursor position to CSS — everything else is
 pure CSS). No framework, no build step.
 
-Canonical domain: **https://joshstrauss.me** (chosen 2026-07-11; $26.99/yr,
-available but not yet purchased — buy it before deploying).
+Canonical domain: **https://joshstrauss.me**. The site is live on GitHub Pages.
 
 ## Design system
 
@@ -53,7 +52,7 @@ tailwind.config.js).
 ├── styles.css            full design system
 ├── script.js             the only JS: cursor position → CSS --mx/--my
 ├── robots.txt            allows traditional + AI crawlers; points at sitemap
-├── sitemap.xml           one URL, with lastmod
+├── sitemap.xml           public routes, each with lastmod
 ├── llms.txt              summary for AI answer engines (anchor links)
 ├── site.webmanifest      icons manifest
 ├── favicon.svg           JS monogram (PNG fallbacks in assets/)
@@ -105,9 +104,10 @@ Then regenerate `assets/og.png` (the domain is printed on it).
   `knowsAbout`) + `WebSite` + `MobileApplication`/`SoftwareApplication` nodes
   per venture. No `SearchAction` (no search endpoint — deliberate deviation
   from the global checklist).
-- GumGauge copy anywhere on this site must keep its regulatory line:
-  *investigational device pursuing FDA 510(k) clearance; not cleared or
-  approved by the FDA.*
+- GumGauge copy anywhere on this site must state that the concept is
+  investigational, no hardware or clinical performance data exists, it is not
+  cleared or approved by the FDA, and its premarket pathway remains under
+  review.
 - Work order is GumGauge-first (owner decision 2026-07-11).
 - No analytics, no forms, no cookies ⇒ no privacy policy required yet.
 

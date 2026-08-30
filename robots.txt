@@ -18,6 +18,9 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Codex-Web
+Allow: /
+
 User-agent: Claude-SearchBot
 Allow: /
 
