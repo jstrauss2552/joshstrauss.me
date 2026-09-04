@@ -3,6 +3,9 @@
 # editor / tooling scratch
 .playwright-mcp/
 *.log
+# generated verification export and local dependencies
+/dist/
+/node_modules/
 # stray local screenshots (never part of the site)
 /dossier-*.png
 /home-*.png

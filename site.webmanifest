@@ -4,8 +4,8 @@
   "description": "Personal site of Josh Strauss — UATX sophomore, builder, and founder.",
   "start_url": "/",
   "display": "browser",
-  "background_color": "#F7F2EA",
-  "theme_color": "#F7F2EA",
+  "background_color": "#f6f8fb",
+  "theme_color": "#f6f8fb",
   "icons": [
     { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" }

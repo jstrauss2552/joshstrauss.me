@@ -1,85 +1,28 @@
 <!doctype html>
-<!-- Renders the 1200×630 social share card ("GumGauge Navy" — inverted
-     navy cover, like a book jacket for the cream site). Not linked from
-     the site. Regenerate assets/og.png by screenshotting this page at
-     1200×630 (see README.md → "Regenerating the share image"). -->
+<!-- Render this page at 1200 x 630, device scale 1, to generate og.png. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Josh Strauss social share image</title>
   <style>
-    @font-face {
-      font-family: 'Newsreader';
-      font-style: normal;
-      font-weight: 400 700;
-      src: url('../fonts/newsreader-var.woff2') format('woff2');
-    }
-    @font-face {
-      font-family: 'Newsreader';
-      font-style: italic;
-      font-weight: 400 700;
-      src: url('../fonts/newsreader-italic-var.woff2') format('woff2');
-    }
-    @font-face {
-      font-family: 'Fragment Mono';
-      font-style: normal;
-      font-weight: 400;
-      src: url('../fonts/fragment-mono.woff2') format('woff2');
-    }
+    @font-face { font-family: Hanken; src: url('../fonts/hanken-grotesk-var.woff2') format('woff2'); font-weight: 100 900; }
+    @font-face { font-family: Newsreader; src: url('../fonts/newsreader-var.woff2') format('woff2'); font-weight: 400 700; }
     * { margin: 0; box-sizing: border-box; }
     html, body { width: 1200px; height: 630px; overflow: hidden; }
-    body {
-      position: relative;
-      background: #1E3A5F;
-      background-image: radial-gradient(52rem 30rem at 10% -12%,
-        rgba(125, 211, 252, .14), transparent 62%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 90px;
-      font-family: 'Newsreader', Georgia, serif;
-      color: #F7F2EA;
-    }
-    body::after {
-      content: '';
-      position: absolute; inset: 0;
-      opacity: .06; mix-blend-mode: overlay; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-    .kicker {
-      font-family: 'Fragment Mono', monospace;
-      font-size: 20px; letter-spacing: .12em; text-transform: uppercase;
-      color: #9CC4E4; display: flex; align-items: center; gap: 24px;
-      margin-bottom: 34px;
-    }
-    .kicker::after { content: ''; flex: 1; height: 2px; background: rgba(247, 242, 234, .25); }
-    h1 {
-      font-size: 118px; font-weight: 540; letter-spacing: -0.015em;
-      line-height: 1.02; margin-bottom: 30px;
-    }
-    h1 em { font-style: italic; font-weight: 480; color: #7DD3FC; }
-    .sub {
-      font-family: 'Fragment Mono', monospace;
-      font-size: 24px; color: #9CC4E4; letter-spacing: .02em;
-    }
-    .domain {
-      position: absolute; bottom: 56px; left: 90px;
-      font-family: 'Fragment Mono', monospace;
-      font-size: 22px; letter-spacing: .1em; text-transform: uppercase;
-      color: #7DD3FC;
-    }
-    .mark {
-      position: absolute; bottom: 44px; right: 90px;
-      width: 56px; height: 56px; border-radius: 10px; background: #7DD3FC;
-      display: grid; place-items: center;
-      color: #1E3A5F; font-style: italic; font-size: 30px;
-    }
+    body { padding: 58px 66px; background: #f6f8fb; color: #152942; font-family: Hanken, Arial, sans-serif; }
+    header { display: flex; align-items: center; justify-content: space-between; font-size: 19px; }
+    .mark { display: grid; place-items: center; width: 43px; height: 43px; border-radius: 50%; background: #152942; color: white; font-size: 17px; font-weight: 600; }
+    header p { color: #56667a; }
+    h1 { margin: 48px 0 25px -8px; font-size: 147px; line-height: 1; letter-spacing: -.075em; font-weight: 500; }
+    .mission { max-width: 750px; font: 400 42px/1.15 Newsreader, Georgia, serif; letter-spacing: -.025em; }
+    footer { position: absolute; bottom: 55px; left: 66px; right: 66px; display: flex; justify-content: space-between; font-size: 19px; color: #56667a; }
   </style>
 </head>
 <body>
-  <p class="kicker">Builder &amp; Founder</p>
-  <h1>Josh <em>Strauss</em></h1>
-  <p class="sub">Building products and companies that leave people better off.</p>
-  <p class="domain">joshstrauss.me</p>
-  <div class="mark">JS</div>
+  <header><span class="mark">JS</span><p>Builder, founder &amp; UATX sophomore</p></header>
+  <h1>Josh Strauss.</h1>
+  <p class="mission">Building products and companies that leave people better off.</p>
+  <footer><span>joshstrauss.me</span><span>Austin, TX / Miami, FL</span></footer>
 </body>
 </html>

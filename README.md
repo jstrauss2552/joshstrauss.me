@@ -1,92 +1,77 @@
 # joshstrauss.me — personal site
 
-Personal website for **Josh Strauss** — builder & founder. A **one-page
-résumé-style document** ("dossier"): a dimmed cream sheet with a navy
-letterhead band, floating on a deep navy field with animated aurora glows
-and a cursor-following dot-grid reveal. Hand-written HTML + CSS + one tiny
-script (`script.js` feeds the cursor position to CSS — everything else is
-pure CSS). No framework, no build step.
+Personal website for **Josh Strauss**, builder and founder. A light, spacious
+portfolio with oversized navy typography, dedicated venture sections, and
+reading collections. Hand-written HTML and CSS; no client-side JavaScript,
+framework, runtime dependencies, or required compilation step.
 
-Canonical domain: **https://joshstrauss.me**. The site is live on GitHub Pages.
+Canonical domain: **https://joshstrauss.me**. Live on GitHub Pages.
 
 ## Design system
 
-"**Dossier — GumGauge Navy**" (2026-07-13 restructure inspired by the
-construction of a reference résumé-site; 2026-07-16 recolored to GumGauge's
-brand blues at the owner's request — brand source: ~/gumgauge-dental
-tailwind.config.js).
+Updated 2026-09-04. The personal portfolio leads with Josh's name and mission,
+then ventures (GumGauge first), projects, sites, background, reading, and contact.
 
-- Tokens: field **deep navy `#0E1F35`** (gradient to `#1E3A5F`) · paper
-  `#EDE9DE` (dimmed cream, gradient on the sheet) · ink `#1C1917` · accent
-  **GumGauge navy `#1E3A5F`** · hover `#152942` · **sky `#7DD3FC` is
-  decorative ONLY** (letterhead italic, selection, glow, OG card — never
-  text on cream) · live dot `#3F8D57`. **Green means LIVE only.**
-- The letterhead band (`.masthead`) bleeds to the sheet edges via negative
-  `--sheet-pad` margins — keep that variable in sync with `.sheet` padding.
-- Motion (all gated behind `prefers-reduced-motion`): sheet-landing +
-  interleaved panel cascade on load, light sweep across the letterhead,
-  drifting aurora glows, cursor-following glow + dot-grid (`.glow` +
-  `script.js`), panel hover lift, pulsing live dots.
-- **Bump the `styles.css?v=N` query param on every CSS change** — browsers
-  cache aggressively and the owner has been bitten once.
-- Type: **Newsreader** (name + italic accents) · **Hanken Grotesk** (body) ·
-  **Fragment Mono** (panel titles, meta lines, contacts). Self-hosted WOFF2
-  in `fonts/`, preloaded, `font-display: swap`.
-- Light only — dark mode was removed 2026-07-11 by owner decision. Don't
-  reintroduce orange accents or a recolored dark mode. (The green "Ledger
-  Green" accent was replaced 2026-07-16 — don't bring it back either.)
-- Layout: `.sheet` (max 72rem, radius, shadow) → `.masthead` → `.dossier`
-  two-column grid (narrow facts column left, work column right) → panels
-  (`.panel` with mono `.panel__title` bar) → `.entry` rows (bold name +
-  mono meta + 1–3 sentences + mono links).
+- Colors: pale blue canvas `#f6f8fb`, navy ink `#152942`, blue accent `#234f85`,
+  muted text `#56667a`, blue surface `#e6edf6`, white `#ffffff`.
+- Type: self-hosted **Hanken Grotesk** for name, navigation, and body;
+  **Newsreader** for the mission and reading links. Only these two normal
+  faces are preloaded.
+- Layout: `.site-shell` → compact header → oversized name and current-work
+  index → `.venture-grid` → background and native `<details>` disclosures →
+  reading links → contact. Books, papers, and 404 share `.sheet` and `.masthead`.
+- Responsive single-column layouts on mobile; visible keyboard focus, a skip
+  link, and reduced-motion support. The only entrance animation is the name.
+- Light only. Keep orange and green accents out; green dots indicate a live
+  site, and existing venture logos retain their own brand colors.
+- **Bump the `styles.css?v=N` query parameter on every CSS change**, in all
+  four styled HTML pages. Browsers cache aggressively.
 
 ## Structure
 
 ```
-.
-├── index.html            the whole site (one page)
-├── books/index.html      full book list (linked from the Reading panel)
-├── papers/index.html     the GumGauge literature — 66 verified citations, 8 themed panels
-├── about/ work/ now/     redirect stubs → /#anchor (old URLs, noindex)
-├── 404.html              not-found (noindex)
-├── styles.css            full design system
-├── script.js             the only JS: cursor position → CSS --mx/--my
-├── robots.txt            allows traditional + AI crawlers; points at sitemap
-├── sitemap.xml           public routes, each with lastmod
-├── llms.txt              summary for AI answer engines (anchor links)
-├── site.webmanifest      icons manifest
-├── favicon.svg           JS monogram (PNG fallbacks in assets/)
-├── fonts/                self-hosted WOFF2
-├── assets/               og.png, icon PNGs, og-/icon-template.html (generators)
-├── CONTENT-TODO.md       ← the fill-in list: everything the site needs from Josh
-└── README.md
+index.html               home portfolio
+books/index.html         full book list
+papers/index.html        66 research citations in 8 themed sections
+about/ work/ now/         noindex redirects to existing home anchors
+404.html                 not-found page (noindex)
+styles.css               shared responsive design system
+robots.txt               traditional and AI crawler access
+sitemap.xml              public routes and modification dates
+llms.txt                 summary and navigation for AI answer engines
+site.webmanifest         icons and browser theme
+fonts/                   self-hosted WOFF2 fonts
+assets/                  venture logos, icons, and social share card
+scripts/site.mjs          dependency-free static validator and export
+CONTENT-TODO.md           outstanding content items
 ```
 
-## Local preview
+## Local preview and validation
 
 ```bash
-cd ~/Projects/personal-website
 python3 -m http.server 5500
-# → http://localhost:5500
+# Open http://localhost:5500
 ```
 
-## Placeholder / draft system
-
-`<html data-draft="true">` on index.html makes each `.ph` placeholder render
-with a green highlight + dashed outline. Every placeholder has
-`data-todo="<id>"` and a hover `title` — ids map to `CONTENT-TODO.md`.
-
-- `.ph-frame` image placeholders (headshot) are **not** gated — they keep
-  their styling until replaced with a real `<img>`.
-- Placeholder links (socials, résumé, store links) have **no `href`** — they
-  become links by adding one, and can't dead-click meanwhile.
-
-Leaving draft mode when content is real:
+With Node.js 20 or newer (no install step):
 
 ```bash
-sed -i '' 's/ data-draft="true"//' index.html
-grep -n 'data-todo' index.html && echo 'NOT READY' || echo 'clean'
+npm run lint
+npm run build
 ```
+
+Lint checks public-route metadata, JSON-LD, local links/assets/anchors,
+internal links, sitemap entries, and crawler rules. Build repeats validation
+and exports the site to ignored `dist/`. GitHub Pages still serves the repository
+root from `main`; it does not require or deploy the local `dist/` directory.
+Use desktop and mobile browser checks for visual changes.
+
+## Content maintenance
+
+`CONTENT-TODO.md` tracks outstanding content and optional additions. Keep
+existing factual claims, venture status, public contact details, and literature
+citations intact when changing the design. Use the existing IDs for inbound
+anchor links; do not add a headshot or product imagery until a real asset exists.
 
 ## Changing the domain
 
@@ -101,7 +86,8 @@ Then regenerate `assets/og.png` (the domain is printed on it).
 - `robots.txt` (2026 AI-crawler list), `sitemap.xml`, `llms.txt` at root.
 - JSON-LD `@graph` on the page: `ProfilePage` (with `dateCreated` /
   `dateModified`) → `Person` (`https://joshstrauss.me/#person`, full, with
-  `knowsAbout`) + `WebSite` + `MobileApplication`/`SoftwareApplication` nodes
+  `knowsAbout`) + `WebSite`, a referenced GumGauge `Organization`, and
+  `MobileApplication`/`SoftwareApplication` nodes
   per venture. No `SearchAction` (no search endpoint — deliberate deviation
   from the global checklist).
 - GumGauge copy anywhere on this site must state that the concept is
@@ -114,9 +100,11 @@ Then regenerate `assets/og.png` (the domain is printed on it).
 ### When the page changes (same-commit rule)
 
 - [ ] `sitemap.xml` `<lastmod>`
-- [ ] JSON-LD `dateModified` + the visible "Updated" date in the Status panel
+- [ ] JSON-LD `dateModified` + the visible "Updated" date in the Right now note
 - [ ] `llms.txt` if sections/links changed
 - [ ] OG tags still describe the page
+- [ ] `npm run lint` and `npm run build`
+- [ ] Desktop/mobile layout and keyboard navigation
 
 ## Regenerating the share image
 

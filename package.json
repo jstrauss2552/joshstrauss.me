@@ -1,0 +1,12 @@
+{
+  "name": "joshstrauss-personal-site",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "node --check scripts/site.mjs && node scripts/site.mjs lint",
+    "build": "node scripts/site.mjs build"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

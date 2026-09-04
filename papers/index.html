@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://joshstrauss.me/papers/">
 
   <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#152942">
+  <meta name="theme-color" content="#f6f8fb">
 
   <meta property="og:site_name" content="Josh Strauss">
   <meta property="og:type" content="website">
@@ -18,14 +18,16 @@
   <meta property="og:image" content="https://joshstrauss.me/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Josh Strauss — builder and founder">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Research Papers &amp; Publications — Josh Strauss">
+  <meta name="twitter:description" content="The peer-reviewed literature behind GumGauge — periodontal measurement and the oral-systemic health links.">
   <meta name="twitter:image" content="https://joshstrauss.me/assets/og.png">
+  <meta name="twitter:image:alt" content="Josh Strauss — builder and founder">
 
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/newsreader-italic-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/fragment-mono.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/styles.css?v=8">
+  <link rel="stylesheet" href="/styles.css?v=10">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -43,6 +45,8 @@
         "name": "Research Papers & Publications — Josh Strauss",
         "isPartOf": { "@id": "https://joshstrauss.me/#website" },
         "about": { "@id": "https://joshstrauss.me/#person" },
+        "author": { "@id": "https://joshstrauss.me/#person" },
+        "dateModified": "2026-09-04",
         "inLanguage": "en"
       },
       {
@@ -57,14 +61,13 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="glow" aria-hidden="true"></div>
 
   <div class="sheet">
     <header class="masthead">
-      <div>
-        <h1>Josh <em>Strauss</em></h1>
-        <p class="masthead__tagline">building products and companies that leave people better off.</p>
-      </div>
+      <a class="brand" href="/" aria-label="Josh Strauss, home">
+        <span class="brand__mark" aria-hidden="true">JS</span>
+        <span>Josh Strauss</span>
+      </a>
       <nav class="masthead__nav" aria-label="Primary">
         <a href="/">Home</a>
         <a href="/books/">Books</a>
@@ -74,12 +77,20 @@
 
     <main id="main">
       <a class="backlink" href="/">Back to the front page</a>
-      <p class="page-lede" style="margin-top: var(--space-2);">
+      <h1 class="page-heading">Research papers &amp; publications</h1>
+      <p class="updated">Updated <time datetime="2026-09-04">2026-09-04</time></p>
+      <p class="page-lede">
         The peer-reviewed literature behind <a href="https://www.gumgaugedental.com" rel="noopener">GumGauge</a> —
         why measuring periodontal disease matters (its links to cardiovascular disease,
         diabetes, Alzheimer's, and more), and how a full-arch measuring device is validated.
-        Grouped by theme; every citation links to PubMed or its DOI.
+        Grouped by theme; every citation links to its source.
         The <a href="/books/">books I've read</a> are on their own page.
+      </p>
+      <p class="research-disclosure">
+        GumGauge is investigational. No hardware or clinical performance data exists;
+        session timing, safety, and performance remain unvalidated design targets.
+        The device is not cleared or approved by the FDA, and its premarket pathway
+        remains under review.
       </p>
 
         <section class="panel" aria-labelledby="probing-title">
@@ -218,7 +229,5 @@
       <p><a href="/">joshstrauss.me</a></p>
     </footer>
   </div>
-
-  <script src="/script.js" defer></script>
 </body>
 </html>
