@@ -41,7 +41,7 @@ sitemap.xml              public routes and modification dates
 llms.txt                 summary and navigation for AI answer engines
 site.webmanifest         icons and browser theme
 fonts/                   self-hosted WOFF2 fonts
-assets/                  venture logos, icons, and social share card
+assets/                  resume PDF, venture logos, icons, and social share card
 scripts/site.mjs          dependency-free static validator and export
 CONTENT-TODO.md           outstanding content items
 ```
@@ -72,6 +72,15 @@ Use desktop and mobile browser checks for visual changes.
 existing factual claims, venture status, public contact details, and literature
 citations intact when changing the design. Use the existing IDs for inbound
 anchor links; do not add a headshot or product imagery until a real asset exists.
+
+The homepage and contact section link to `assets/Josh-Strauss-Resume.pdf`.
+Replace that file when updating the resume so saved links keep working; update
+its `DigitalDocument` JSON-LD date and the resume date in `llms.txt` at the same time.
+The editable resume source is `scripts/build_resume.py` (Python 3.10+ with
+`python-docx`). Running it writes `output/docs/Josh-Strauss-Resume.docx`.
+Export that document to PDF and visually check its page layout before replacing
+the public asset. Local deliverables and render checks in `output/` and `tmp/`
+are gitignored; `npm run build` copies the verified PDF already in `assets/`.
 
 ## Changing the domain
 

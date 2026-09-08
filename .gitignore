@@ -18,3 +18,7 @@
 /reading-*.png
 /glow-*.png
 /navy-*.png
+
+# Local resume deliverables and render checks
+/output/
+/tmp/

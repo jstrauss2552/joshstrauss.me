@@ -30,7 +30,7 @@ hover one to see its note. Find them in code:
 - [ ] Giltedge — confirm "Founder"
 - [ ] Status box — anything else in rotation this month
 - [ ] One humanizing sentence for the More box
-- [x] Résumé PDF — removed from the site entirely (Josh's call, 2026-07-16)
+- [x] Résumé PDF — restored with homepage and contact links (Josh's request, 2026-09-08)
 
 ## Whenever
 

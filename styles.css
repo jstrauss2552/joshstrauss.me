@@ -59,6 +59,10 @@ section[id], article[id] { scroll-margin-top: 2rem; }
 .text-link { display: inline-flex; align-items: center; gap: 1.7rem; margin-top: 1.8rem; font-weight: 500; font-size: .95rem; text-decoration: none; }
 .text-link span { font-size: 1.5rem; line-height: 1; }
 .text-link:hover { text-decoration: underline; }
+.hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; margin-top: 1.8rem; }
+.hero__actions .text-link { margin-top: 0; }
+.resume-link { display: inline-flex; align-items: center; min-height: 2.75rem; padding: .65rem 1rem; border-radius: .4rem; background: var(--ink); color: var(--white); font-size: .95rem; font-weight: 500; text-decoration: none; }
+.resume-link:hover { background: var(--accent); color: var(--white); }
 .current-index { padding-top: .2rem; }
 .current-index h2 { font: 500 .9rem/1.5 var(--font-body); letter-spacing: 0; color: var(--muted); margin-bottom: .6rem; }
 .current-index a { display: flex; justify-content: space-between; gap: 1.2rem; padding: .65rem 0; border-bottom: 1px solid var(--line); text-decoration: none; font-size: 1rem; }
@@ -192,6 +196,7 @@ details[open] > summary::after { content: '−'; }
   .hero__bottom { grid-template-columns: 1fr; gap: 2.25rem; }
   .hero__intro > p { font-size: 2.2rem; max-width: 23ch; }
   .text-link { margin-top: 1.3rem; }
+  .hero__actions { margin-top: 1.3rem; }
   .current-index a { padding-block: .75rem; }
   .section-heading { display: block; margin-bottom: 1.4rem; }
   .section-heading h2 { font-size: 1.95rem; }
@@ -238,7 +243,7 @@ details[open] > summary::after { content: '−'; }
 @media print {
   body { background: white; color: black; font-size: 10pt; }
   .site-shell, .sheet { width: 100%; }
-  .site-nav, .masthead__nav, .text-link, .skip-link, .sheet-footer > a { display: none; }
+  .site-nav, .masthead__nav, .hero__actions, .text-link, .skip-link, .sheet-footer > a { display: none; }
   .hero { padding: 1rem 0 2rem; }
   .hero h1 { font-size: 64pt; }
   .hero__intro > p { font-size: 24pt; }
