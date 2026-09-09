@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "lint": "node --check scripts/site.mjs && node scripts/site.mjs lint",
+    "lint": "node --check scripts/site.mjs && node --check assets/scroll-trail.js && node scripts/site.mjs lint",
     "build": "node scripts/site.mjs build"
   },
   "engines": {

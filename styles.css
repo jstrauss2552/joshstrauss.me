@@ -100,6 +100,7 @@ section[id], article[id] { scroll-margin-top: 2rem; }
 .side-projects, .sites-section { margin-top: 4.5rem; }
 .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
 .project-grid > .entry { border-top: 1px solid var(--line); padding-top: 1.5rem; }
+.project-heading { display: flex; align-items: center; gap: 1rem; }
 .entry h3 { font-size: 1.25rem; margin-bottom: .5rem; }
 .entry__head { margin-bottom: .8rem; }
 .entry > p, .entry > div > p { color: var(--muted); }

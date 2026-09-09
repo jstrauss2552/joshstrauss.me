@@ -32,7 +32,9 @@
   <!-- Self-hosted fonts: no third-party requests. -->
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/hanken-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/styles.css?v=12">
+  <link rel="stylesheet" href="/styles.css?v=13">
+  <link rel="stylesheet" href="/assets/scroll-trail.css?v=1">
+  <script src="/assets/scroll-trail.js?v=1" defer></script>
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -55,7 +57,7 @@
         "@id": "https://joshstrauss.me/#person"
       },
       "dateCreated": "2026-07-10",
-      "dateModified": "2026-09-08",
+      "dateModified": "2026-09-09",
       "hasPart": {
         "@id": "https://joshstrauss.me/assets/Josh-Strauss-Resume.pdf"
       },
@@ -201,6 +203,7 @@
       "@id": "https://joshstrauss.me/#jarvis-app",
       "name": "Jarvis",
       "url": "https://joshstrauss.me/#jarvis",
+      "image": "https://joshstrauss.me/assets/logos/jarvis.png",
       "author": {
         "@id": "https://joshstrauss.me/#person"
       },
@@ -274,6 +277,7 @@
             <a href="#gumgauge"><span>GumGauge</span><span>Dental technology</span></a>
             <a href="#mise"><span>Mise</span><span>Meal planning</span></a>
             <a href="#giltedge"><span>Giltedge &amp; Co.</span><span>Private capital</span></a>
+            <a href="#jarvis"><span>Jarvis</span><span>macOS assistant</span></a>
           </div>
         </div>
       </section>
@@ -344,9 +348,12 @@
       <section class="side-projects" aria-labelledby="projects-title">
         <div class="section-heading"><h2 id="projects-title">Also on my desk</h2><p>Personal software and research.</p></div>
         <div class="project-grid"><article class="entry" id="jarvis">
-              <div class="entry__head">
-                <h3>Jarvis</h3>
-                <span class="entry__meta">Personal software · macOS · Mark IV</span>
+              <div class="entry__head project-heading">
+                <span class="logo-slot"><img src="/assets/logos/jarvis.png" alt="" width="256" height="256" loading="lazy"></span>
+                <div>
+                  <h3>Jarvis</h3>
+                  <span class="entry__meta">Personal software · macOS · Mark IV</span>
+                </div>
               </div>
               <p>
                 A native macOS assistant I built and use on my Mac. Its command
@@ -441,7 +448,7 @@
               limits of what it means to be an active member of society.</span>
             </p>
 
-          <div class="now-note" id="now"><h3 id="status-title">Right now</h3><p>Running GumGauge, iterating on Mise’s iOS TestFlight beta, validating Giltedge &amp; Co.’s pre-seed thesis, developing <a href="#edgeboard">Edgeboard</a>, and using and refining <a href="#jarvis">Jarvis</a> on my Mac.</p><p class="updated">Updated <time datetime="2026-09-08">2026-09-08</time></p></div>
+          <div class="now-note" id="now"><h3 id="status-title">Right now</h3><p>Running GumGauge, iterating on Mise’s iOS TestFlight beta, validating Giltedge &amp; Co.’s pre-seed thesis, developing <a href="#edgeboard">Edgeboard</a>, and using and refining <a href="#jarvis">Jarvis</a> on my Mac.</p><p class="updated">Updated <time datetime="2026-09-09">2026-09-09</time></p></div>
         </div>
       </section>
 

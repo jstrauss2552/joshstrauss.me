@@ -4,7 +4,7 @@
 
 ## What this site covers
 
-This is his personal portfolio: who he is, what he builds, what he reads, and how to reach him. The page carries Schema.org Person/ProfilePage JSON-LD; the canonical entity is https://joshstrauss.me/#person.
+This is his personal portfolio: who he is, what he builds, what he reads, and how to reach him. The homepage's current-project list includes GumGauge, Mise, Giltedge & Co., and Jarvis. The page carries Schema.org Person/ProfilePage JSON-LD; the canonical entity is https://joshstrauss.me/#person. Portfolio updated September 9, 2026.
 
 ## Platforms
 

@@ -2,14 +2,14 @@
 
 Personal website for **Josh Strauss**, builder and founder. A light, spacious
 portfolio with oversized navy typography, dedicated venture sections, and
-reading collections. Hand-written HTML and CSS; no client-side JavaScript,
-framework, runtime dependencies, or required compilation step.
+reading collections. Hand-written HTML and CSS with a small, optional JavaScript
+scroll animation; no framework, runtime dependencies, or required compilation step.
 
 Canonical domain: **https://joshstrauss.me**. Live on GitHub Pages.
 
 ## Design system
 
-Updated 2026-09-04. The personal portfolio leads with Josh's name and mission,
+Updated 2026-09-09. The personal portfolio leads with Josh's name and mission,
 then ventures (GumGauge first), projects, sites, background, reading, and contact.
 
 - Colors: pale blue canvas `#f6f8fb`, navy ink `#152942`, blue accent `#234f85`,
@@ -21,7 +21,9 @@ then ventures (GumGauge first), projects, sites, background, reading, and contac
   index → `.venture-grid` → background and native `<details>` disclosures →
   reading links → contact. Books, papers, and 404 share `.sheet` and `.masthead`.
 - Responsive single-column layouts on mobile; visible keyboard focus, a skip
-  link, and reduced-motion support. The only entrance animation is the name.
+  link, and reduced-motion support. The name has a brief entrance animation;
+  a blue line traces the homepage's outer gutter as you scroll. The line is
+  decorative, ignores pointer input, and is hidden with reduced motion or JavaScript off.
 - Light only. Keep orange and green accents out; green dots indicate a live
   site, and existing venture logos retain their own brand colors.
 - **Bump the `styles.css?v=N` query parameter on every CSS change**, in all
@@ -42,6 +44,7 @@ llms.txt                 summary and navigation for AI answer engines
 site.webmanifest         icons and browser theme
 fonts/                   self-hosted WOFF2 fonts
 assets/                  resume PDF, venture logos, icons, and social share card
+assets/scroll-trail.*     homepage scroll decoration; disabled with reduced motion
 scripts/site.mjs          dependency-free static validator and export
 CONTENT-TODO.md           outstanding content items
 ```
