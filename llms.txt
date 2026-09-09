@@ -22,7 +22,7 @@ This is his personal portfolio: who he is, what he builds, what he reads, and ho
 - [Work](https://joshstrauss.me/#work): current ventures with role and status
 - [Status](https://joshstrauss.me/#now): what has his attention right now, with a visible date
 - [Contact](https://joshstrauss.me/#contact): email and profiles
-- [Books](https://joshstrauss.me/books/): books Josh has read
+- [Books](https://joshstrauss.me/books/): books Josh has read across business, philosophy, history, literature, and personal growth; updated September 9, 2026
 - [Research papers & publications](https://joshstrauss.me/papers/): the peer-reviewed literature behind GumGauge (periodontal measurement, dental AI, and oral-systemic health links)
 
 ## Projects
