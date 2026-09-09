@@ -5,140 +5,111 @@
 
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const namespace = 'http://www.w3.org/2000/svg';
-  const element = (name, attributes = {}) => {
-    const node = document.createElementNS(namespace, name);
-    for (const [key, value] of Object.entries(attributes)) node.setAttribute(key, value);
-    return node;
-  };
-  const layers = ['back', 'front'].map(name => {
-    const svg = element('svg', {
-      class: `scroll-trail scroll-trail--${name}`,
-      'aria-hidden': 'true', focusable: 'false'
-    });
-    const mask = element('mask', {
-      id: `scroll-trail-${name}-mask`, maskUnits: 'userSpaceOnUse',
-      x: 0, y: 0, 'mask-type': 'luminance'
-    });
-    const defs = element('defs');
-    defs.append(mask);
-    const path = element('path', {
-      class: 'scroll-trail__line', mask: `url(#scroll-trail-${name}-mask)`
-    });
-    svg.append(defs, path);
-    document.body.append(svg);
-    return { svg, mask, path };
-  });
+  const svg = document.createElementNS(namespace, 'svg');
+  const path = document.createElementNS(namespace, 'path');
+  svg.setAttribute('class', 'scroll-trail');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  path.setAttribute('class', 'scroll-trail__line');
+  svg.append(path);
+  document.body.append(svg);
 
   let frame = 0;
   let needsMeasure = true;
   let length = 0;
-  let pageHeight = 0;
   let viewportHeight = 0;
   let scrollRange = 1;
   let samples = [];
+  let drawn = null;
+  let lastTime = 0;
+
+  // A natural cubic spline shares both slope and curvature at every join.
+  // Unlike independent S-bends, it never forces a sharp turn at a section edge.
+  function curvePath(points, width) {
+    const count = points.length;
+    const gaps = points.slice(1).map((point, i) => point.y - points[i].y);
+    const upper = Array(count).fill(0);
+    const values = Array(count).fill(0);
+    const curvature = Array(count).fill(0);
+    for (let i = 1; i < count - 1; i += 1) {
+      const previous = gaps[i - 1];
+      const next = gaps[i];
+      const divisor = 2 * (previous + next) - previous * upper[i - 1];
+      const change = 6 * ((points[i + 1].x - points[i].x) / next - (points[i].x - points[i - 1].x) / previous);
+      upper[i] = next / divisor;
+      values[i] = (change - previous * values[i - 1]) / divisor;
+    }
+    for (let i = count - 2; i > 0; i -= 1) curvature[i] = values[i] - upper[i] * curvature[i + 1];
+
+    const segments = gaps.map((height, i) => {
+      const start = points[i];
+      const end = points[i + 1];
+      const slope = (end.x - start.x) / height;
+      const startSlope = slope - height * (2 * curvature[i] + curvature[i + 1]) / 6;
+      const endSlope = slope + height * (curvature[i] + 2 * curvature[i + 1]) / 6;
+      return [
+        { x: start.x + height * startSlope / 3, y: start.y + height / 3 },
+        { x: end.x - height * endSlope / 3, y: end.y - height / 3 },
+        end
+      ];
+    });
+
+    // Fit the entire curve together if needed; clamping individual handles creates kinks.
+    const xs = [points[0].x, ...segments.flat().map(point => point.x)];
+    const left = Math.min(...xs);
+    const right = Math.max(...xs);
+    const scale = Math.min(1, (width - 32) / Math.max(1, right - left));
+    const offset = left < 16 || right > width - 16 ? width / 2 - scale * (left + right) / 2 : 0;
+    const coordinate = point => `${point.x * scale + offset} ${point.y}`;
+    return `M ${coordinate(points[0])} ${segments.map(segment => `C ${segment.map(coordinate).join(', ')}`).join(' ')}`;
+  }
 
   function measure() {
     const scrollY = window.scrollY;
-    const box = node => {
-      const rect = node.getBoundingClientRect();
-      return { left: rect.left, top: rect.top + scrollY, width: rect.width, height: rect.height };
-    };
-    const bounds = box(shell);
+    const bounds = shell.getBoundingClientRect();
     const width = document.documentElement.clientWidth;
     viewportHeight = window.innerHeight;
-    pageHeight = Math.max(bounds.top + bounds.height, viewportHeight);
+    const pageHeight = Math.max(bounds.bottom + scrollY, viewportHeight);
     scrollRange = Math.max(1, pageHeight - viewportHeight);
     const points = [];
     const add = (fraction, y) => points.push({ x: bounds.left + bounds.width * fraction, y });
-    const visit = (selector, turns) => {
-      const rect = box(main.querySelector(selector));
-      for (const [x, y] of turns) add(x, rect.top + rect.height * y);
+    const center = (selector, fraction) => {
+      const rect = main.querySelector(selector).getBoundingClientRect();
+      add(fraction, rect.top + scrollY + rect.height / 2);
     };
 
-    const title = box(main.querySelector('h1'));
-    if (width > 700) {
-      const intro = box(main.querySelector('.hero__intro'));
-      const current = box(main.querySelector('.current-index'));
-      const heroGap = ((intro.left + intro.width + current.left) / 2 - bounds.left) / bounds.width;
-      add(heroGap, title.top + title.height + 18);
-      visit('.hero', [[heroGap - .015, .87], [.16, .98]]);
-      visit('#gumgauge', [[.16, .05], [.78, .92]]);
-      visit('#mise', [[.84, .07], [.17, .96]]);
-      visit('.side-projects', [[.50, .02], [.50, 1.03], [.67, 1.18]]);
-      visit('.sites-section', [[.67, .10], [.67, 1.04], [.22, 1.20]]);
-      visit('.about-section', [[.22, .04], [.39, .12], [.39, .42], [.22, .68], [.39, .98]]);
-      visit('.background-section', [[.57, .02], [.59, .42], [.56, .90]]);
-      visit('.reading-section', [[.50, .15], [.50, .76], [.18, .98]]);
-    } else {
-      const leftEdge = (8 - bounds.left) / bounds.width;
-      const rightEdge = (width - 8 - bounds.left) / bounds.width;
-      add(rightEdge, title.top + title.height + 18);
-      visit('.hero', [[rightEdge, .87], [.16, .98]]);
-      visit('#gumgauge', [[.16, .05], [.78, .92]]);
-      visit('#mise', [[.82, .07], [.18, .94]]);
-      visit('#giltedge', [[.16, .08], [.82, .94]]);
-      visit('.side-projects', [[rightEdge, .06], [rightEdge, 1.01], [leftEdge, 1.06]]);
-      visit('.sites-section', [[leftEdge, .10], [leftEdge, 1.01], [.85, 1.06]]);
-      visit('.about-section', [[rightEdge, .06], [rightEdge, .98]]);
-      visit('.background-section', [[leftEdge, .02], [leftEdge, .99]]);
-      visit('.reading-section', [[rightEdge, .14], [rightEdge, .85], [.18, .98]]);
-    }
-    visit('#contact', [[.16, .10], [.88, .90]]);
-    add(.70, pageHeight - 20);
-    points.sort((a, b) => a.y - b.y);
-
-    let d = `M ${points[0].x} ${points[0].y}`;
-    for (let i = 1; i < points.length; i += 1) {
-      const previous = points[i - 1];
-      const next = points[i];
-      const bend = (next.y - previous.y) * .48;
-      d += ` C ${previous.x} ${previous.y + bend}, ${next.x} ${next.y - bend}, ${next.x} ${next.y}`;
+    const title = main.querySelector('h1').getBoundingClientRect();
+    add(.76, title.bottom + scrollY + 24);
+    center('#gumgauge', .24);
+    center('#mise', .76);
+    if (width <= 700) center('#giltedge', .26);
+    center('.side-projects', width <= 700 ? .74 : .28);
+    center('.sites-section', width <= 700 ? .26 : .74);
+    center('.about-section', .24);
+    center('.background-section', .74);
+    center('.reading-section', .28);
+    center('#contact', .72);
+    add(.78, pageHeight - 20);
+    // Small screens and expanded sections can move anchors; keep bends well separated.
+    const anchors = [];
+    for (const point of points) {
+      if (!anchors.length || point.y - anchors[anchors.length - 1].y > 120) anchors.push(point);
     }
 
-    // Keep the drawing clear of words, controls, and brand artwork in either layer.
-    const protectedBoxes = [...shell.querySelectorAll(
-      'h1, h2, h3, p, li, summary, .entry__meta, .hero__topline, .hero__actions, .current-index, .logo-slot, .site-header, .contact-links, .sheet-footer, .about-copy'
-    )].filter(node => node.getClientRects().length).map(box);
-    const cards = [...main.querySelectorAll('.venture, .contact-section')].map(node => ({
-      ...box(node), inset: node.id === 'gumgauge' ? 0 : 28
-    }));
-
-    for (const [index, { svg, mask, path }] of layers.entries()) {
-      svg.style.width = `${width}px`;
-      svg.style.height = `${pageHeight}px`;
-      svg.setAttribute('viewBox', `0 0 ${width} ${pageHeight}`);
-      mask.setAttribute('width', width);
-      mask.setAttribute('height', pageHeight);
-      const cutouts = protectedBoxes.map(rect => element('rect', {
-        x: rect.left - 7, y: rect.top - 7, width: rect.width + 14,
-        height: rect.height + 14, rx: 5, fill: 'black'
-      }));
-      // The rear stroke disappears under cards. The front stroke overlaps only their edges.
-      if (index === 1) {
-        for (const rect of cards) cutouts.push(element('rect', {
-          x: rect.left + rect.inset, y: rect.top + rect.inset,
-          width: rect.width - rect.inset * 2, height: rect.height - rect.inset * 2,
-          rx: Math.max(0, 18 - rect.inset), fill: 'black'
-        }));
-      }
-      mask.replaceChildren(element('rect', { width, height: pageHeight, fill: 'white' }), ...cutouts);
-      path.setAttribute('d', d);
-    }
-
-    const path = layers[0].path;
+    svg.style.width = `${width}px`;
+    svg.style.height = `${pageHeight}px`;
+    svg.setAttribute('viewBox', `0 0 ${width} ${pageHeight}`);
+    path.setAttribute('d', curvePath(anchors, width));
     length = path.getTotalLength();
-    for (const layer of layers) layer.path.style.strokeDasharray = `${length} ${length}`;
-    // Cache height along the curve so scrolling needs no path measurements.
-    samples = Array.from({ length: 257 }, (_, i) => ({
-      distance: length * i / 256, y: path.getPointAtLength(length * i / 256).y
+    path.style.strokeDasharray = `${length} ${length}`;
+    // All geometry is cached on resize. Scroll frames only interpolate numbers.
+    samples = Array.from({ length: 385 }, (_, i) => ({
+      distance: length * i / 384, y: path.getPointAtLength(length * i / 384).y
     }));
     needsMeasure = false;
   }
 
-  function draw() {
-    frame = 0;
-    if (motion.matches) return;
-    if (needsMeasure) measure();
+  function targetDistance() {
     const scrollY = Math.max(0, window.scrollY);
     const progress = Math.min(1, scrollY / scrollRange);
     const revealY = scrollY + viewportHeight * (.65 + .35 * progress);
@@ -152,11 +123,28 @@
     const before = samples[low];
     const after = samples[high];
     const fraction = Math.min(1, Math.max(0, (revealY - before.y) / Math.max(1, after.y - before.y)));
-    const distance = before.distance + fraction * (after.distance - before.distance);
-    for (const { svg, path } of layers) {
-      path.style.strokeDashoffset = `${length - distance}`;
-      svg.classList.add('is-ready');
+    return before.distance + fraction * (after.distance - before.distance);
+  }
+
+  function draw(time) {
+    frame = 0;
+    if (motion.matches) return;
+    const resized = needsMeasure;
+    if (resized) measure();
+    const target = targetDistance();
+    if (drawn === null || resized) drawn = target;
+    else {
+      const elapsed = lastTime ? Math.min(64, time - lastTime) : 16;
+      drawn += (target - drawn) * (1 - Math.exp(-elapsed / 110));
     }
+    if (Math.abs(target - drawn) < .2) drawn = target;
+    path.style.strokeDashoffset = `${length - drawn}`;
+    svg.classList.add('is-ready');
+    // Only run while catching up to a scroll gesture; there is no idle animation loop.
+    if (drawn !== target) {
+      lastTime = time;
+      frame = window.requestAnimationFrame(draw);
+    } else lastTime = 0;
   }
 
   function schedule() {
@@ -176,10 +164,10 @@
     if (motion.matches) {
       window.cancelAnimationFrame(frame);
       frame = 0;
-      for (const { svg } of layers) svg.classList.remove('is-ready');
+      lastTime = 0;
+      svg.classList.remove('is-ready');
     } else invalidate();
   });
-
   if ('ResizeObserver' in window) new ResizeObserver(invalidate).observe(shell);
   window.addEventListener('load', invalidate, { once: true });
   schedule();
