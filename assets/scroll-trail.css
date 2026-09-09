@@ -1,19 +1,25 @@
+.home { isolation: isolate; }
+.home .site-shell { position: relative; z-index: 1; }
+
 .scroll-trail {
   display: none;
   position: absolute;
   top: 0;
+  left: 0;
   overflow: hidden;
   pointer-events: none;
   user-select: none;
   color: var(--accent, #234f85);
 }
 
+.scroll-trail--back { z-index: 0; opacity: .45; }
+.scroll-trail--front { z-index: 2; opacity: .8; }
+
 .scroll-trail__line {
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.7;
+  stroke-width: 2.5;
   stroke-linecap: round;
-  opacity: .65;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -21,7 +27,7 @@
 }
 
 @media (max-width: 700px) {
-  .scroll-trail__line { stroke-width: 1.35; opacity: .55; }
+  .scroll-trail__line { stroke-width: 1.8; }
 }
 
 @media print {

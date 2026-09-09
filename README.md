@@ -22,8 +22,10 @@ then ventures (GumGauge first), projects, sites, background, reading, and contac
   reading links → contact. Books, papers, and 404 share `.sheet` and `.masthead`.
 - Responsive single-column layouts on mobile; visible keyboard focus, a skip
   link, and reduced-motion support. The name has a brief entrance animation;
-  a blue line traces the homepage's outer gutter as you scroll. The line is
-  decorative, ignores pointer input, and is hidden with reduced motion or JavaScript off.
+  a blue line winds across the homepage as you scroll, passing beneath cards
+  and over selected card edges. Separate foreground and background layers keep
+  the route clear of text and controls. The line ignores pointer input and is
+  hidden with reduced motion or JavaScript off.
 - Light only. Keep orange and green accents out; green dots indicate a live
   site, and existing venture logos retain their own brand colors.
 - **Bump the `styles.css?v=N` query parameter on every CSS change**, in all
