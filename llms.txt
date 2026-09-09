@@ -1,6 +1,6 @@
 # Josh Strauss
 
-> Josh Strauss is a builder and founder who ships software end to end. He is the co-founder and CEO of GumGauge (started August 2023), an investigational chairside periodontal-measurement concept with no built hardware or clinical performance data (not cleared or approved by the FDA; premarket pathway under review). He is also building Mise, a pantry-first AI meal-planning app in iOS TestFlight early access with Android in development; Giltedge & Co., a pre-seed investor-reporting concept for family offices and private funds; and a private, evidence-governed sports-forecasting workspace. He designed and built gumgaugedental.com, getmise.org, and straussproduction.com. He is a sophomore at the University of Austin (UATX), Class of 2029, concentrating in Economics, Politics, and History, and is based in Austin, TX and Miami, FL. He left Northeastern University after one semester to make a deliberate bet on UATX, an unaccredited new university, choosing to be around people who constantly challenge themselves to push the limits of what it means to be an active member of society. His stated mission is helping people and leaving society better than he found it — a thread that runs from nine years of youth human-rights advocacy with B'nai B'rith International to the ventures he builds today.
+> Josh Strauss is a builder and founder who ships software end to end. He is the co-founder and CEO of GumGauge (started August 2023), an investigational chairside periodontal-measurement concept with no built hardware or clinical performance data (not cleared or approved by the FDA; premarket pathway under review). He is also building Mise, a pantry-first AI meal-planning app in iOS TestFlight early access with Android in development; Giltedge & Co., a pre-seed investor-reporting concept for family offices and private funds; Edgeboard, a private sports analytics workspace; and Jarvis, a native macOS assistant he built and uses on his Mac. He designed and built gumgaugedental.com, getmise.org, and straussproduction.com. He is a sophomore at the University of Austin (UATX), Class of 2029, concentrating in Economics, Politics, and History, and is based in Austin, TX and Miami, FL. He left Northeastern University after one semester to make a deliberate bet on UATX, an unaccredited new university, choosing to be around people who constantly challenge themselves to push the limits of what it means to be an active member of society. His stated mission is helping people and leaving society better than he found it — a thread that runs from nine years of youth human-rights advocacy with B'nai B'rith International to the ventures he builds today.
 
 ## What this site covers
 
@@ -10,6 +10,8 @@ This is his personal portfolio: who he is, what he builds, what he reads, and ho
 
 - Personal website: https://joshstrauss.me/, with dedicated books and research pages
 - Mise: iOS TestFlight early access; Android in development
+- Jarvis: personal macOS software, installed and in active development (Mark IV)
+- Edgeboard: private sports research workspace in development
 - Other projects: availability and links are listed under Projects below
 
 ## Key page links
@@ -28,8 +30,8 @@ This is his personal portfolio: who he is, what he builds, what he reads, and ho
 - [GumGauge](https://joshstrauss.me/#gumgauge): investigational chairside periodontal-measurement concept; no built hardware or clinical performance data; session timing, safety, and performance remain unvalidated design targets; not cleared or approved by the FDA; premarket pathway under review; founded August 2023, Josh is co-founder & CEO; company site at https://www.gumgaugedental.com
 - [Mise](https://joshstrauss.me/#mise): pantry-first AI meal planning around what is already in the fridge and pantry, with photo-assisted inventory, weekly plans, grocery lists, guided cooking, and an in-app sous-chef; iOS TestFlight early access with Android in development
 - [Giltedge & Co.](https://joshstrauss.me/#giltedge): pre-seed concept for investor reporting and reconciled back-office workflows for family offices and private funds
-- [Jarvis](https://joshstrauss.me/#jarvis): a voice-first personal AI layer wired into his own tools and workflows; in development
-- [Sports Analytics Calculator](https://joshstrauss.me/#sports-analytics): private, observation-first MLB and NFL forecasting workspace whose candidate models remain analysis-only until their evidence and out-of-sample evaluation are verified
+- [Jarvis](https://joshstrauss.me/#jarvis): native macOS assistant Josh built and uses on his Mac; a command center for his agenda, reminders, focus sessions, local notes, and projects, with on-device natural-language commands; personal software in active development (Mark IV)
+- [Edgeboard](https://joshstrauss.me/#edgeboard): private sports analytics workspace with MLB and NFL forecasting research, plus NBA game and injury tracking; experimental score and probability models, historical backtesting, and evidence checks; in development, with models subject to evaluation before release
 - [Strauss Production & Entertainment](https://straussproduction.com/): boutique South Florida event studio; Josh designed and built the site
 
 ## Contact

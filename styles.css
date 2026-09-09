@@ -90,7 +90,7 @@ section[id], article[id] { scroll-margin-top: 2rem; }
 .venture__category { font-size: .85rem; }
 .logo-slot { display: grid; place-items: center; flex-shrink: 0; width: 3.25rem; height: 3.25rem; }
 .logo-slot img { width: 100%; height: 100%; object-fit: contain; }
-.venture--mise .logo-slot { border-radius: .75rem; overflow: hidden; }
+.venture--mise .logo-slot, #getmise .logo-slot { border-radius: 23%; overflow: hidden; }
 .venture--giltedge .logo-slot { padding: .3rem; }
 .venture__top + .venture__body { padding-top: 1.8rem; }
 .venture--mise { background: #edf2f8; }
