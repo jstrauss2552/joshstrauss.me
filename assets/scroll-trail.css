@@ -2,7 +2,7 @@
 .home .site-shell { position: relative; }
 
 /* Real content sits above the line; no rectangular masks erase its path. */
-.home .site-shell :is(h1, h2, h3, p, a, li, summary, .logo-slot, .entry__meta, .hero__topline) {
+:where(.home .site-shell) :where(h1, h2, h3, p, a, li, summary, .logo-slot, .entry__meta, .hero__topline) {
   position: relative;
   z-index: 2;
 }

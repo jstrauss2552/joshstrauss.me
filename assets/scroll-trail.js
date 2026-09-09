@@ -73,23 +73,43 @@
     scrollRange = Math.max(1, pageHeight - viewportHeight);
     const points = [];
     const add = (fraction, y) => points.push({ x: bounds.left + bounds.width * fraction, y });
-    const center = (selector, fraction) => {
+    const through = (selector, fraction, depth) => {
       const rect = main.querySelector(selector).getBoundingClientRect();
-      add(fraction, rect.top + scrollY + rect.height / 2);
+      add(fraction, rect.top + scrollY + rect.height * depth);
     };
 
     const title = main.querySelector('h1').getBoundingClientRect();
-    add(.76, title.bottom + scrollY + 24);
-    center('#gumgauge', .24);
-    center('#mise', .76);
-    if (width <= 700) center('#giltedge', .26);
-    center('.side-projects', width <= 700 ? .74 : .28);
-    center('.sites-section', width <= 700 ? .26 : .74);
-    center('.about-section', .24);
-    center('.background-section', .74);
-    center('.reading-section', .28);
-    center('#contact', .72);
-    add(.78, pageHeight - 20);
+    const mobile = width <= 700;
+    add(.79, title.bottom + scrollY + 24);
+    // Uneven landmarks let the line linger, drift, and sweep across several blocks.
+    // The stacked mobile layout has its own route instead of squeezing desktop bends.
+    const route = mobile ? [
+      ['#gumgauge', .31, .32],
+      ['#mise', .24, .74],
+      ['#giltedge', .49, .68],
+      ['.side-projects', .76, .40],
+      ['.sites-section', .63, .30],
+      ['.sites-section', .69, .78],
+      ['.about-section', .32, .32],
+      ['.about-section', .40, .80],
+      ['.background-section', .48, .28],
+      ['.background-section', .28, .76],
+      ['.reading-section', .51, .46],
+      ['#contact', .61, .40]
+    ] : [
+      ['#gumgauge', .32, .35],
+      ['#mise', .22, .72],
+      ['.side-projects', .48, .42],
+      ['.sites-section', .86, .62],
+      ['.about-section', .66, .28],
+      ['.about-section', .71, .75],
+      ['.background-section', .26, .28],
+      ['.background-section', .36, .72],
+      ['.reading-section', .43, .36],
+      ['#contact', .73, .30]
+    ];
+    for (const [selector, fraction, depth] of route) through(selector, fraction, depth);
+    add(mobile ? .54 : .62, pageHeight - 20);
     // Small screens and expanded sections can move anchors; keep bends well separated.
     const anchors = [];
     for (const point of points) {
