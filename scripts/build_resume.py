@@ -31,13 +31,21 @@ EDUCATION = [
      'Cooper City, FL; High Honors'),
 ]
 VENTURES = [
-    ('GumGauge', 'Aug 2023 - Present', 'Co-founder and CEO', [
+    ('GumGauge Dental Corporation', 'Aug 2023 - Present', 'Co-founder and CEO', [
         'Build the public website and sample-data software demo for an investigational chairside periodontal-measurement concept.',
-    ], 'Concept stage: no hardware or clinical performance data exists; timing, safety and performance remain unvalidated. Not FDA cleared or approved; premarket pathway remains under review.'),
-    ('Mise', 'May 2026 - Present', 'Creator and Developer', [
-        'Designed and built an AI meal-planning app with photo-assisted pantry inventory, weekly meal plans, grocery lists, guided cooking and an in-app sous-chef.',
-        'Developed a native iOS app with a Supabase backend, now approved for the App Store; an Android client is in development.',
-    ], None),
+        'Expanded the team with an engineer who has 13 years of experience designing and building Class I, II and III medical devices.',
+    ], 'Concept stage: no hardware or clinical performance data exists; timing, safety and performance remain unvalidated. Not FDA cleared or approved; premarket pathway remains under review.',
+     ('gumgaugedental.com', 'https://www.gumgaugedental.com/')),
+    ('Mise: Cook From Your Fridge', 'May 2026 - Present', 'Creator and Developer', [
+        'Built a native iOS AI meal planner with a Supabase backend: photo-assisted pantry inventory, weekly meal plans, grocery lists, guided cooking and an in-app sous-chef.',
+        'Approved for the App Store, with 35 people on the waitlist; Android client in development.',
+    ], None, ('getmise.org', 'https://getmise.org/')),
+    ('Jarvis (Mark IV)', None, 'Personal macOS assistant - Personal project', [
+        'Built a native macOS command center for agenda, reminders, focus sessions, local notes and projects, with on-device natural-language commands; installed and in personal use.',
+    ], None, ('joshstrauss.me/#jarvis', 'https://joshstrauss.me/#jarvis')),
+    ('Edgeboard', None, 'Sports analytics research - Personal project in development', [
+        'Developing a private sports research workspace: an MLB feature pipeline, NBA/NFL observation feeds, historical backtesting and evidence checks before forecast release.',
+    ], None, ('joshstrauss.me/#edgeboard', 'https://joshstrauss.me/#edgeboard')),
 ]
 SERVICE = [
     ("B'nai B'rith International", '2017 - Present',
@@ -90,13 +98,13 @@ def paragraph(parent, text='', size=9.5, color=INK, bold=False, before=0, after=
     return p
 
 
-def link(parent, label, url):
-    p = paragraph(parent, size=9, color=LIGHT, after=7, leading=12)
+def link(parent, label, url, color=LIGHT, after=4, leading=11.5):
+    p = paragraph(parent, size=9, color=color, after=after, leading=leading)
     node = OxmlElement('w:hyperlink')
     node.set(qn('r:id'), p.part.relate_to(url, RT.HYPERLINK, is_external=True))
     run = OxmlElement('w:r')
     props = OxmlElement('w:rPr')
-    for tag, value in [('color', LIGHT), ('sz', '18')]:
+    for tag, value in [('color', color), ('sz', '18')]:
         element = OxmlElement(f'w:{tag}')
         element.set(qn('w:val'), value)
         props.append(element)
@@ -114,18 +122,20 @@ def link(parent, label, url):
 
 def heading(parent, text, sidebar=False, before=17):
     return paragraph(parent, text, size=12.5, color=WHITE if sidebar else INK,
-                     bold=True, before=before, after=10, leading=15, keep=True,
+                     bold=True, before=before, after=7, leading=15, keep=True,
                      style='Heading 1')
 
 
-def entry(parent, name, dates, role, bullets, note=None):
-    paragraph(parent, name, size=12, bold=True, before=7, after=3, leading=14, keep=True)
-    paragraph(parent, role, size=9.3, color=MUTED, after=2, leading=11.5, keep=True)
-    paragraph(parent, dates, size=8.5, color=MUTED, after=7, leading=11, keep=True)
+def entry(parent, name, dates, role, bullets, note=None, website=None):
+    paragraph(parent, name, size=12, bold=True, before=6, after=2, leading=14, keep=True)
+    if website:
+        link(parent, *website, color=MUTED, leading=10.5)
+    metadata = f'{role} | {dates}' if dates else role
+    paragraph(parent, metadata, size=9, color=MUTED, after=5, leading=11.5, keep=True)
     for text in bullets:
-        paragraph(parent, text, after=6, leading=12.5)
+        paragraph(parent, text, after=5, leading=12)
     if note:
-        paragraph(parent, note, size=9, color=MUTED, after=9, leading=11.5)
+        paragraph(parent, note, size=9, color=MUTED, after=6, leading=11.5)
 
 
 def build_resume():
@@ -179,45 +189,45 @@ def build_resume():
     indent.set(qn('w:type'), 'dxa')
     table_props.append(indent)
     sidebar, main = table.rows[0].cells
-    set_cell(sidebar, NAVY, 700, 420, 420, 480)
+    set_cell(sidebar, NAVY, 560, 420, 420, 480)
     set_cell(main, PALE, 610, 530, 420, 530)
 
     paragraph(sidebar, 'Builder and founder', size=10.5, color=WHITE, bold=True,
               after=7, leading=13)
-    paragraph(sidebar, 'Austin, TX\nMiami, FL', color=LIGHT, leading=13, after=0)
-    heading(sidebar, 'Contact', sidebar=True, before=27)
+    paragraph(sidebar, 'Austin, TX / Miami, FL', color=LIGHT, leading=13, after=0)
+    heading(sidebar, 'Contact', sidebar=True, before=18)
     link(sidebar, 'joshstrauss06@gmail.com', 'mailto:joshstrauss06@gmail.com')
     link(sidebar, '786-908-6686', 'tel:+17869086686')
     link(sidebar, 'joshstrauss.me', 'https://joshstrauss.me/')
     link(sidebar, 'LinkedIn', 'https://www.linkedin.com/in/joshua-strauss-33b779263/')
     link(sidebar, 'github.com/jstrauss2552', 'https://github.com/jstrauss2552')
 
-    heading(sidebar, 'Education', sidebar=True, before=23)
+    heading(sidebar, 'Education', sidebar=True, before=16)
     for name, dates, description in EDUCATION:
-        paragraph(sidebar, name, size=10, color=WHITE, bold=True, before=8,
+        paragraph(sidebar, name, size=10, color=WHITE, bold=True, before=6,
                   after=4, leading=12.5, keep=True)
         paragraph(sidebar, dates, size=9, color=LIGHT, after=4, keep=True)
-        paragraph(sidebar, description, size=9, color=LIGHT, after=6, leading=12)
-    heading(sidebar, 'Skills', sidebar=True, before=18)
+        paragraph(sidebar, description, size=9, color=LIGHT, after=4, leading=12)
+    heading(sidebar, 'Skills', sidebar=True, before=16)
     paragraph(sidebar, 'Native iOS apps\nWeb development\nSupabase\nHTML, CSS and JavaScript',
               size=9, color=LIGHT, after=0, leading=14)
-    heading(sidebar, 'Languages', sidebar=True, before=18)
-    paragraph(sidebar, 'English and Spanish\nNative\n\nHebrew\nBasic',
+    heading(sidebar, 'Languages', sidebar=True, before=16)
+    paragraph(sidebar, 'English and Spanish: Native\nHebrew: Basic',
               size=9, color=LIGHT, after=0, leading=13)
+    heading(sidebar, 'Selected Honors', sidebar=True, before=16)
+    for text in HONORS:
+        paragraph(sidebar, text, size=9, color=LIGHT, after=6, leading=11.5)
 
     paragraph(main, 'Josh Strauss', size=39, color=INK, before=0, after=10,
               leading=43, style='Title')
     paragraph(main, 'University of Austin sophomore', size=11, color=MUTED,
               after=0, leading=14)
-    heading(main, 'Entrepreneurial Work', before=26)
+    heading(main, 'Entrepreneurship and Software', before=20)
     for args in VENTURES:
         entry(main, *args)
-    heading(main, 'Leadership and Service', before=14)
+    heading(main, 'Leadership and Service', before=12)
     for args in SERVICE:
         entry(main, *args)
-    heading(main, 'Selected Honors', before=14)
-    for text in HONORS:
-        paragraph(main, text, size=9.2, color=MUTED, after=6, leading=12)
 
     # A minimal trailing paragraph keeps Word's table document valid without an extra page.
     trailing = doc.add_paragraph()

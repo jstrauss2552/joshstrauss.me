@@ -17,7 +17,7 @@ This is his personal portfolio: who he is, what he builds, what he reads, and ho
 ## Key page links
 
 - [Home](https://joshstrauss.me/): selected work, background, current interests, and contact details
-- [Resume (PDF)](https://joshstrauss.me/assets/Josh-Strauss-Resume.pdf): Josh's resume, updated September 15, 2026
+- [Resume (PDF)](https://joshstrauss.me/assets/Josh-Strauss-Resume.pdf): Josh's resume with full project names and links for GumGauge Dental Corporation, Mise: Cook From Your Fridge, Jarvis, and Edgeboard; updated September 15, 2026
 - [About](https://joshstrauss.me/#about): who Josh is
 - [Work](https://joshstrauss.me/#work): current ventures with role and status
 - [Status](https://joshstrauss.me/#now): what has his attention right now, with a visible date
