@@ -26,7 +26,7 @@ hover one to see its note. Find them in code:
 ## Then
 
 - [x] GumGauge — Co-founder & CEO, started August 2023 (confirmed 2026-08-29)
-- [x] Mise — solo, started May 2026
+- [x] Mise — solo, started May 2026; App Store approval confirmed by Josh, 2026-09-15
 - [ ] Giltedge — confirm "Founder"
 - [ ] Status box — anything else in rotation this month
 - [ ] One humanizing sentence for the More box
@@ -35,7 +35,7 @@ hover one to see its note. Find them in code:
 ## Whenever
 
 - [x] Venture logos — pulled from the GumGauge, Mise, Giltedge, and SP&E repos (2026-07-16)
-- [x] Mise waitlist — 24 people as of 2026-07-17 (historical; not displayed)
+- [x] Mise waitlist — 35 people as of 2026-09-15 (confirmed by Josh; not displayed)
 - [ ] More traction numbers as they happen (users, inquiries, Giltedge pipeline)
 - [ ] App Store / Play Store links when live
 

@@ -36,7 +36,7 @@ VENTURES = [
     ], 'Concept stage: no hardware or clinical performance data exists; timing, safety and performance remain unvalidated. Not FDA cleared or approved; premarket pathway remains under review.'),
     ('Mise', 'May 2026 - Present', 'Creator and Developer', [
         'Designed and built an AI meal-planning app with photo-assisted pantry inventory, weekly meal plans, grocery lists, guided cooking and an in-app sous-chef.',
-        'Developed a native iOS app with a Supabase backend, now in TestFlight early access; an Android client is in development.',
+        'Developed a native iOS app with a Supabase backend, now approved for the App Store; an Android client is in development.',
     ], None),
 ]
 SERVICE = [
@@ -155,7 +155,7 @@ def build_resume():
     props.comments = ''
     props.keywords = 'Josh Strauss, resume'
     props.created = datetime(2026, 9, 8, tzinfo=timezone.utc)
-    props.modified = props.created
+    props.modified = datetime(2026, 9, 15, tzinfo=timezone.utc)
 
     table = doc.add_table(rows=1, cols=2)
     table.autofit = False
