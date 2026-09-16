@@ -54,7 +54,8 @@ section[id], article[id] { scroll-margin-top: 2rem; }
 .hero__topline { display: flex; justify-content: space-between; gap: 1.25rem; color: var(--muted); font-size: .95rem; }
 .hero h1 { margin: 1.3rem 0 2.6rem -.065em; font-size: clamp(5rem, 12.5vw, 11.5rem); font-weight: 500; letter-spacing: -.075em; line-height: 1; }
 .hero h1 span { color: var(--accent); }
-.hero__bottom { display: grid; grid-template-columns: 1.45fr 1fr; gap: 5rem; }
+.hero__bottom { display: grid; grid-template-columns: 1.05fr .85fr 1fr; align-items: center; gap: 2.5rem; }
+.hero__portrait { position: relative; z-index: 2; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 40%; border-radius: .75rem; }
 .hero__intro > p { max-width: 22ch; font: 400 clamp(2rem, 3.1vw, 3rem)/1.14 var(--font-display); letter-spacing: -.035em; }
 .text-link { display: inline-flex; align-items: center; gap: 1.7rem; margin-top: 1.8rem; font-weight: 500; font-size: .95rem; text-decoration: none; }
 .text-link span { font-size: 1.5rem; line-height: 1; }
@@ -177,7 +178,7 @@ details[open] > summary::after { content: '−'; }
 .error-sheet { min-height: 65svh; }
 @media (max-width: 1000px) {
   .site-shell, .sheet { width: calc(100% - 4rem); }
-  .hero__bottom { gap: 3rem; }
+  .hero__bottom { gap: 2rem; }
   .venture__body { padding: 2rem; }
   .venture__top { padding: 1.7rem 2rem 0; }
   .venture--featured { grid-template-columns: .7fr 1.2fr; }
@@ -195,6 +196,7 @@ details[open] > summary::after { content: '−'; }
   .hero__topline { flex-direction: column; gap: .25rem; font-size: .85rem; }
   .hero h1 { font-size: clamp(3.35rem, 13vw, 5.8rem); margin: 1.4rem 0 2rem -.055em; }
   .hero__bottom { grid-template-columns: 1fr; gap: 2.25rem; }
+  .hero__portrait { grid-row: 1; aspect-ratio: 6 / 5; }
   .hero__intro > p { font-size: 2.2rem; max-width: 23ch; }
   .text-link { margin-top: 1.3rem; }
   .hero__actions { margin-top: 1.3rem; }

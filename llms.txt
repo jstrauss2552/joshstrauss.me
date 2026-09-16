@@ -4,7 +4,7 @@
 
 ## What this site covers
 
-This is his personal portfolio: who he is, what he builds, what he reads, and how to reach him. The homepage's current-project list includes GumGauge, Mise, Giltedge & Co., and Jarvis. The page carries Schema.org Person/ProfilePage JSON-LD; the canonical entity is https://joshstrauss.me/#person. Portfolio updated September 15, 2026.
+This is his personal portfolio: who he is, what he builds, what he reads, and how to reach him. The homepage's current-project list includes GumGauge, Mise, Giltedge & Co., and Jarvis. The page carries Schema.org Person/ProfilePage JSON-LD; the canonical entity is https://joshstrauss.me/#person. Portfolio updated September 16, 2026.
 
 ## Platforms
 
@@ -17,6 +17,7 @@ This is his personal portfolio: who he is, what he builds, what he reads, and ho
 ## Key page links
 
 - [Home](https://joshstrauss.me/): selected work, background, current interests, and contact details
+- [Portrait](https://joshstrauss.me/assets/josh-strauss-portrait.jpg): photograph of Josh Strauss displayed on the homepage and identified in his Person schema
 - [Resume (PDF)](https://joshstrauss.me/assets/Josh-Strauss-Resume.pdf): Josh's resume with full project names and links for GumGauge Dental Corporation, Mise: Cook From Your Fridge, Jarvis, and Edgeboard; updated September 15, 2026
 - [About](https://joshstrauss.me/#about): who Josh is
 - [Work](https://joshstrauss.me/#work): current ventures with role and status
